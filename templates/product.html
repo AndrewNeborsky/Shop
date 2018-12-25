@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.title }}</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            min-height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+            align-items: stretch;
+            background: white;
+        }
+        #header{
+            background: rgb(150, 39, 57);
+            max-height: 80px;
+            min-height: 80px;
+            padding: 0 10px;
+            font-size: 20px;
+            color: aqua;
+            box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #footer{
+            background: rgb(150, 39, 57);
+            max-height: 30px;
+            min-height: 30px;
+        }
+        #content{
+            flex-grow: 1;
+            padding: 0 10px;
+        }
+        #logo{
+            width: 40px;
+            height: 40px;
+        }
+        #description{
+            background: wheat;
+            border-radius: 10px;
+            padding: 5px 10px;
+            font-size: 19px;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <div>
+        <a href="{% url "index" %}"><img id="logo" src="{% static 'shopping-cart.png' %}"/> </a>
+    </div>
+    <div>
+    Hello, {% if username %}{{ username }}{% else %}guest{% endif %}!
+    {% if username %}
+    <a href="{% url "logout" %}">Sing out</a>
+    {% else %}
+    <a href="{% url "login" %}">Sing in</a>
+    {% endif %}
+    </div>
+</div>
+
+<div id="content">
+    <h1 align="center">{{ product.title }}</h1>
+    <h3 align="left"><b>Price:</b>{{ product.price }}</h3>
+    <div id="description">
+        <p>
+            <b>Description: </b>
+            {{ product.description }}
+        </p>
+    </div>
+</div>
+
+<div id="footer"></div>
+</body>
+</html>
