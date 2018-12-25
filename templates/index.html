@@ -77,7 +77,7 @@
 <div id="content">
     {% for product in products %}
         <br>
-        <a href="/products/{{ product.id }}">
+        <a href="{% url 'product' product_id=product.id %}">
             <div id="block">{{ product.title }} {{ product.price }} {{ product.currency }}</div>
         </a>
     {% endfor %}

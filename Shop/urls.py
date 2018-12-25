@@ -23,5 +23,5 @@ urlpatterns = [
     path('logout/', views.log_out, name='logout'),
     path('login/', views.log_in, name='login'),
     path('register/', views.register, name='register'),
-    re_path(r'products/(?P<product_id>\d+)', views.products, name='register'),
+    re_path(r'products/(?P<product_id>\d+)', views.products, name='product'),
 ]
